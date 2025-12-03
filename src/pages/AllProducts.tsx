@@ -1,49 +1,11 @@
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
-import { newArrivalsProducts } from "@/components/NewArrivals";
-
-// Extended product list for the All Products page
-const allProducts = [
-  ...newArrivalsProducts,
-  {
-    id: "6",
-    image: newArrivalsProducts[0].image,
-    title: "Emerald Silk Embroidered Anarkali",
-    price: 24500,
-    sizes: ["S", "M", "L"]
-  },
-  {
-    id: "7",
-    image: newArrivalsProducts[1].image,
-    title: "Burgundy Velvet Kurta Set",
-    price: 18990,
-    sizes: ["XS", "S", "M", "L"]
-  },
-  {
-    id: "8",
-    image: newArrivalsProducts[2].image,
-    title: "Indigo Chanderi Silk Dress",
-    price: 15680,
-    sizes: ["S/M", "L/XL"]
-  },
-  {
-    id: "9",
-    image: newArrivalsProducts[3].image,
-    title: "Golden Tissue Palazzo Set",
-    price: 22340,
-    sizes: ["S", "M", "L", "XL"]
-  },
-  {
-    id: "10",
-    image: newArrivalsProducts[4].image,
-    title: "Ivory Embroidered Dupatta",
-    price: 7200,
-    sizes: ["FS"]
-  },
-];
+import { getAllProducts } from "@/data/products";
 
 const AllProducts = () => {
+  const allProducts = getAllProducts();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -91,7 +53,11 @@ const AllProducts = () => {
             {allProducts.map((product, index) => (
               <ProductCard
                 key={product.id}
-                {...product}
+                id={product.id}
+                image={product.images[0]}
+                title={product.title}
+                price={product.price}
+                sizes={product.sizes}
                 index={index}
               />
             ))}

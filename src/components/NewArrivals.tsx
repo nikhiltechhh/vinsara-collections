@@ -1,53 +1,9 @@
-import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "./ProductCard";
-
-import product1 from "@/assets/product-1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
-import product4 from "@/assets/product-4.jpg";
-import product5 from "@/assets/product-5.jpg";
-
-export const newArrivalsProducts = [
-  {
-    id: "1",
-    image: product1,
-    title: "Teal Hand Embroidered Velvet Dress",
-    price: 19080,
-    sizes: ["S", "M", "L", "XL"]
-  },
-  {
-    id: "2",
-    image: product2,
-    title: "Wine Hand Embroidered Velvet Dress",
-    price: 17490,
-    sizes: ["XS", "S/M", "L/XL"]
-  },
-  {
-    id: "3",
-    image: product3,
-    title: "Navy Tissue Jacket With Cotton Slip",
-    price: 20860,
-    sizes: ["S/M", "L/XL"]
-  },
-  {
-    id: "4",
-    image: product4,
-    title: "Mustard Tissue Jacket With Cotton Slip",
-    price: 20860,
-    sizes: ["S/M", "L/XL"]
-  },
-  {
-    id: "5",
-    image: product5,
-    title: "Beige Hand Embroidered Chanderi Dupatta",
-    price: 8500,
-    sizes: ["FS"]
-  }
-];
+import { getNewArrivals } from "@/data/products";
 
 const NewArrivals = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -55,6 +11,8 @@ const NewArrivals = () => {
     containScroll: "trimSnaps",
     dragFree: true
   });
+
+  const newArrivalsProducts = getNewArrivals();
 
   const scrollPrev = () => emblaApi?.scrollPrev();
   const scrollNext = () => emblaApi?.scrollNext();
@@ -75,7 +33,7 @@ const NewArrivals = () => {
             to="/all-products"
             className="view-all-btn inline-block"
           >
-            VIEW All
+            View All
           </Link>
         </motion.div>
 
@@ -84,7 +42,11 @@ const NewArrivals = () => {
           {newArrivalsProducts.map((product, index) => (
             <ProductCard
               key={product.id}
-              {...product}
+              id={product.id}
+              image={product.images[0]}
+              title={product.title}
+              price={product.price}
+              sizes={product.sizes}
               index={index}
             />
           ))}
@@ -116,7 +78,14 @@ const NewArrivals = () => {
                   key={product.id}
                   className="flex-[0_0_75%] min-w-0"
                 >
-                  <ProductCard {...product} index={index} />
+                  <ProductCard
+                    id={product.id}
+                    image={product.images[0]}
+                    title={product.title}
+                    price={product.price}
+                    sizes={product.sizes}
+                    index={index}
+                  />
                 </div>
               ))}
             </div>
