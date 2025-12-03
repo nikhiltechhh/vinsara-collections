@@ -28,7 +28,7 @@ const NewArrivals = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 md:mb-14"
         >
-          <h2 className="section-title mb-6">New Arrivals</h2>
+          <h2 className="text-2xl mb-6 font-light tracking-[0.3em] text-foreground">New Arrivals</h2>
           <Link
             to="/all-products"
             className="view-all-btn inline-block"
@@ -55,20 +55,20 @@ const NewArrivals = () => {
         {/* Mobile Carousel - Visible only on mobile */}
         <div className="md:hidden relative">
           {/* Carousel Navigation */}
-          <button
+          {/* <button
             onClick={scrollPrev}
             className="absolute -left-2 top-1/3 z-10 p-2 bg-background/80 shadow-md backdrop-blur-sm hover:bg-background transition-colors"
             aria-label="Previous"
           >
             <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
+          </button> */}
+          {/* <button
             onClick={scrollNext}
             className="absolute -right-2 top-1/3 z-10 p-2 bg-background/80 shadow-md backdrop-blur-sm hover:bg-background transition-colors"
             aria-label="Next"
           >
             <ChevronRight className="w-5 h-5" />
-          </button>
+          </button> */}
 
           {/* Embla Carousel */}
           <div className="overflow-hidden" ref={emblaRef}>

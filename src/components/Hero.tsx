@@ -130,21 +130,7 @@ const Hero = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={goToPrevious}
-        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 p-1.5 md:p-2 bg-hero-text/20 hover:bg-hero-text/30 text-hero-text backdrop-blur-sm transition-all"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-      </button>
-      <button
-        onClick={goToNext}
-        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 p-1.5 md:p-2 bg-hero-text/20 hover:bg-hero-text/30 text-hero-text backdrop-blur-sm transition-all"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-      </button>
+     
 
       {/* Carousel Indicators */}
       <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-2">

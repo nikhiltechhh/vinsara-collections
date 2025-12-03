@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Header from "@/components/Header";
+
 import ProductCard from "@/components/ProductCard";
 import { getAllProducts } from "@/data/products";
 
@@ -8,7 +8,7 @@ const AllProducts = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      
       
       {/* Page Content */}
       <main className="pt-24 md:pt-32 pb-16">

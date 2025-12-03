@@ -1,6 +1,9 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import NewArrivals from "@/components/NewArrivals";
+import CategorySection from "@/components/CategorySection";
+import Video from "@/components/Video";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -8,15 +11,11 @@ const Index = () => {
       <Header />
       <Hero />
       <NewArrivals />
+      <CategorySection />
+      <Video />
+      <Footer />
       
-      {/* Footer */}
-      <footer className="bg-secondary py-12 border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground tracking-wider">
-            © 2024 VINSARAA. All rights reserved.
-          </p>
-        </div>
-      </footer>
+     
     </div>
   );
 };

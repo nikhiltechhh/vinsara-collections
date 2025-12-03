@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { X, User, Search, ShoppingBag, Instagram, Facebook, Youtube, Linkedin, ChevronDown, ChevronUp } from "lucide-react";
+import { X, User, Search, ShoppingBag, Instagram, Facebook, Youtube, Linkedin, ChevronDown, ChevronUp, Minus, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPinterest } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import logo from "@/assets/LOGOV.png";
+import { useCart } from "@/pages/CartContext";
 
 const promoMessages = [
   "10% OFF YOUR FIRST PURCHASE! CODE: VINSARANEW",
@@ -16,45 +18,55 @@ const menuCategories = [
   {
     title: "PRODUCTS",
     items: [
-      { name: "New Arrivals", path: "/all-products" },
+      { name: "New Arrivals", path: "/" },
       { name: "All Products", path: "/all-products" }
     ]
   },
   {
     title: "CLOTHING",
     items: [
-      { name: "Sleeved", path: "/all-products" },
-      { name: "Sleeveless", path: "/all-products" }
+      { name: "Sleeved", path: "/sleeved" },
+      { name: "Sleeveless", path: "/sleeveless" }
     ]
   },
 ];
 
-const Header = () => {
+interface HeaderProps {
+  forceScrolled?: boolean;
+}
+
+const Header = ({ forceScrolled = false }: HeaderProps) => {
   const [currentPromoIndex, setCurrentPromoIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState<string | null>("PRODUCTS");
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(forceScrolled);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const { cartItems, cartCount, updateQuantity, removeFromCart, cartTotal } = useCart();
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPromoIndex((prev) => (prev + 1) % promoMessages.length);
     }, 2000);
-
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-
+    if (forceScrolled) {
+      setIsScrolled(true);
+      return;
+    }
+    
+    const handleScroll = () => setIsScrolled(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [forceScrolled]);
 
   const toggleCategory = (category: string) => {
     setExpandedCategory(expandedCategory === category ? null : category);
   };
+
+  const toggleCart = () => setIsCartOpen((prev) => !prev);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 font-sans">
@@ -78,84 +90,76 @@ const Header = () => {
       <div 
         className={`transition-all duration-300 ${
           isScrolled 
-            ? 'bg-background text-foreground shadow-md' 
+            ? 'bg-background text-foreground ' 
             : 'bg-transparent text-hero-text'
         }`}
       >
         <div className="container mx-auto px-4">
-          {/* Top row - Social Icons - Hidden on mobile, tablet, and small desktop, and when scrolled */}
+
+          {/* Top row - Social Icons (hidden on scroll & mobile) */}
           {!isScrolled && (
             <div className="hidden lg:flex justify-end items-center gap-4 py-2 border-b border-hero-text/10">
-              <a href="#" className="hover:opacity-70 transition-opacity" aria-label="Instagram">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="#" className="hover:opacity-70 transition-opacity" aria-label="Facebook">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href="#" className="hover:opacity-70 transition-opacity" aria-label="YouTube">
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a href="#" className="hover:opacity-70 transition-opacity" aria-label="Pinterest">
-                <FaPinterest className="w-4 h-4" />
-              </a>
-              <a href="#" className="hover:opacity-70 transition-opacity" aria-label="LinkedIn">
-                <Linkedin className="w-4 h-4" />
-              </a>
+              <a href="#"><Instagram className="w-4 h-4" /></a>
+              <a href="#"><Facebook className="w-4 h-4" /></a>
+              <a href="#"><Youtube className="w-4 h-4" /></a>
+              <a href="#"><FaPinterest className="w-4 h-4" /></a>
+              <a href="#"><Linkedin className="w-4 h-4" /></a>
             </div>
           )}
 
-          {/* Bottom row - Menu and Actions */}
+          {/* Bottom row */}
           <div className="flex items-center justify-between h-14 md:h-20">
-            {/* Left: Hamburger Menu */}
+
+            {/* Hamburger Menu */}
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="p-2 transition-colors flex flex-col items-start gap-1.5 hover:opacity-70"
-              aria-label="Open menu"
+              className="p-2 flex flex-col gap-1.5 hover:opacity-70"
             >
-              <span className="w-6 h-0.5 bg-current transition-all"></span>
-              <span className="w-4 h-0.5 bg-current transition-all"></span>
-              <span className="w-6 h-0.5 bg-current transition-all"></span>
+              <span className="w-6 h-0.5 bg-current"></span>
+              <span className="w-4 h-0.5 bg-current"></span>
+              <span className="w-6 h-0.5 bg-current"></span>
             </button>
 
-            {/* Center: Brand Name */}
-            <Link to="/" className="flex-1 text-center">
-              <span className="font-serif text-2xl md:text-3xl tracking-[0.3em] font-light">
-                VINSARAA
-              </span>
-            </Link>
+            {/* Logo */}
+            <div className="flex-1 text-center">
+              <Link to="/">
+                <img
+  src={logo}
+  alt="VINSARAA"
+  className="h-12 md:h-20 mx-auto transition-all duration-300"
+  style={{
+    filter: isScrolled
+      ? 'brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(315deg) brightness(0.3) contrast(1.5)' // GOLD AFTER SCROLL
+      : 'brightness(0) invert(1)' // PURE WHITE BEFORE SCROLL
+  }}
+/>
 
-            {/* Right: User Actions */}
+              </Link>
+            </div>
+
+            {/* Right Icons */}
             <div className="flex items-center gap-2 md:gap-3">
+              <button className="p-2 hover:bg-foreground/5"><User className="w-5 h-5" /></button>
+              <button className="p-2 hover:bg-foreground/5"><Search className="w-5 h-5" /></button>
+
+              {/* Shopping Cart */}
               <button 
-                className={`p-2 transition-colors ${
-                  isScrolled ? 'hover:bg-foreground/5' : 'hover:bg-hero-text/10'
-                }`}
-                aria-label="Account"
-              >
-                <User className="w-5 h-5" />
-              </button>
-              <button 
-                className={`p-2 transition-colors ${
-                  isScrolled ? 'hover:bg-foreground/5' : 'hover:bg-hero-text/10'
-                }`}
-                aria-label="Search"
-              >
-                <Search className="w-5 h-5" />
-              </button>
-              <button 
-                className={`p-2 transition-colors ${
-                  isScrolled ? 'hover:bg-foreground/5' : 'hover:bg-hero-text/10'
-                }`}
-                aria-label="Cart"
+                className="relative p-2 hover:bg-foreground/5"
+                onClick={toggleCart}
               >
                 <ShoppingBag className="w-5 h-5" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 text-xs w-4 h-4 flex items-center justify-center rounded-full bg-red-500 text-white font-bold">
+                    {cartCount}
+                  </span>
+                )}
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Sidebar Menu Drawer */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
@@ -164,48 +168,37 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
               className="fixed inset-0 bg-hero-overlay/50 z-50"
               onClick={() => setIsMenuOpen(false)}
             />
 
-            {/* Menu Drawer */}
+            {/* Drawer */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="fixed left-0 top-0 bottom-0 w-80 md:w-96 bg-menu text-menu-foreground z-50 overflow-y-auto"
             >
               {/* Close Button */}
-              <motion.div 
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.3 }}
-                className="flex justify-end p-4 border-b border-menu-border"
-              >
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="p-2 hover:bg-foreground/5 transition-colors"
-                  aria-label="Close menu"
-                >
+              <div className="flex justify-end p-4 border-b border-menu-border">
+                <button onClick={() => setIsMenuOpen(false)} className="p-2">
                   <X className="w-6 h-6" />
                 </button>
-              </motion.div>
+              </div>
 
-              {/* Menu Content */}
+              {/* Menu */}
               <nav className="p-6">
                 {menuCategories.map((category, index) => (
                   <motion.div 
-                    key={category.title} 
+                    key={category.title}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + (index * 0.05), duration: 0.3 }}
+                    transition={{ delay: 0.1 + index * 0.05 }}
                     className="border-b border-menu-border"
                   >
                     <button
                       onClick={() => toggleCategory(category.title)}
-                      className="w-full flex items-center justify-between py-4 text-left font-medium tracking-wider text-sm hover:text-muted-foreground transition-colors"
+                      className="w-full flex justify-between py-4 text-sm font-medium"
                     >
                       {category.title}
                       {expandedCategory === category.title ? (
@@ -215,13 +208,12 @@ const Header = () => {
                       )}
                     </button>
 
-                    <AnimatePresence initial={false}>
+                    <AnimatePresence>
                       {expandedCategory === category.title && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
                           <ul className="pb-4 space-y-2">
@@ -229,8 +221,8 @@ const Header = () => {
                               <li key={item.name}>
                                 <Link
                                   to={item.path}
+                                  className="block py-2 pl-4 text-sm"
                                   onClick={() => setIsMenuOpen(false)}
-                                  className="block py-2 pl-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
                                 >
                                   {item.name}
                                 </Link>
@@ -243,30 +235,75 @@ const Header = () => {
                   </motion.div>
                 ))}
               </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
-              {/* Social Icons in Menu - Mobile */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.3 }}
-                className="lg:hidden flex items-center justify-center gap-6 p-6 border-t border-menu-border"
-              >
-                <a href="#" className="p-2 hover:bg-foreground/5 rounded-full transition-all hover:scale-110" aria-label="Instagram">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="#" className="p-2 hover:bg-foreground/5 rounded-full transition-all hover:scale-110" aria-label="Facebook">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="#" className="p-2 hover:bg-foreground/5 rounded-full transition-all hover:scale-110" aria-label="YouTube">
-                  <Youtube className="w-5 h-5" />
-                </a>
-                <a href="#" className="p-2 hover:bg-foreground/5 rounded-full transition-all hover:scale-110" aria-label="Pinterest">
-                  <FaPinterest className="w-5 h-5" />
-                </a>
-                <a href="#" className="p-2 hover:bg-foreground/5 rounded-full transition-all hover:scale-110" aria-label="LinkedIn">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </motion.div>
+      {/* Cart Drawer */}
+      <AnimatePresence>
+        {isCartOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50 z-50"
+              onClick={toggleCart}
+            />
+
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              className="fixed top-0 right-0 bottom-0 w-80 md:w-96 bg-background z-50 shadow-lg overflow-y-auto"
+            >
+              <div className="flex justify-between items-center p-4 border-b border-border">
+                <h2 className="font-medium text-lg">Your Cart</h2>
+                <button onClick={toggleCart}>
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="p-4 space-y-4">
+                {cartItems.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">Your cart is empty.</p>
+                ) : (
+                  cartItems.map((item) => (
+                    <div key={`${item.id}-${item.size}`} className="flex items-center gap-3 border-b border-border pb-3">
+                      <img src={item.image} alt={item.title} className="w-16 h-16 object-cover rounded" />
+                      <div className="flex-1">
+                        <p className="text-sm font-medium">{item.title}</p>
+                        <p className="text-xs text-muted-foreground">Size: {item.size}</p>
+                        <p className="text-sm font-medium">₹{item.price}</p>
+
+                        {/* Quantity Controls */}
+                        <div className="flex items-center gap-2 mt-1">
+                          <button onClick={() => updateQuantity(item.id, item.size, item.quantity - 1)} className="p-1 border rounded">
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="px-2">{item.quantity}</span>
+                          <button onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)} className="p-1 border rounded">
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
+                      </div>
+                      <button onClick={() => removeFromCart(item.id, item.size)} className="p-1 hover:text-red-500">
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {cartItems.length > 0 && (
+                <div className="p-4 border-t border-border">
+                  <p className="text-sm font-medium mb-2">Total: ₹{cartTotal}</p>
+                  <button className="w-full bg-foreground text-background py-3 font-medium text-sm hover:bg-foreground/90 transition-all">
+                    Checkout
+                  </button>
+                </div>
+              )}
             </motion.div>
           </>
         )}

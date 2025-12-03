@@ -2,15 +2,17 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp, Minus, Plus, Ruler } from "lucide-react";
-import Header from "@/components/Header";
-import { getProductById, products } from "@/data/products";
+
+import { getProductById, allProducts as products } from "@/data/allProducts";
 import ProductCard from "@/components/ProductCard";
 import { toast } from "@/hooks/use-toast";
+import { useCart } from "@/pages/CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const product = getProductById(id || "");
+  const { addToCart } = useCart();
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -20,7 +22,7 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <div className="min-h-screen bg-background">
-        <Header />
+        
         <div className="pt-32 text-center">
           <h1 className="text-2xl font-serif">Product not found</h1>
           <button
@@ -55,6 +57,17 @@ const ProductDetail = () => {
       });
       return;
     }
+
+    addToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.images[0],
+      size: selectedSize,
+      quantity: quantity,
+      sku: product.sku,
+    });
+
     toast({
       title: "Added to cart",
       description: `${product.title} (${selectedSize}) x ${quantity}`,
@@ -70,6 +83,17 @@ const ProductDetail = () => {
       });
       return;
     }
+
+    addToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.images[0],
+      size: selectedSize,
+      quantity: quantity,
+      sku: product.sku,
+    });
+
     toast({
       title: "Proceeding to checkout",
       description: "Redirecting to payment...",
@@ -86,7 +110,7 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      
 
       <main className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4">
@@ -144,7 +168,7 @@ const ProductDetail = () => {
               </div>
 
               {/* Main Image */}
-              <div className="flex-1 relative overflow-hidden bg-product-card">
+              <div className="flex-1 relative overflow-hidden bg-secondary">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={selectedImage}
@@ -395,7 +419,7 @@ const ProductDetail = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="mt-16 md:mt-24"
             >
-              <h2 className="section-title text-center mb-10">
+              <h2 className="text-xl md:text-2xl font-light tracking-[0.2em] text-center mb-10">
                 You May Also Like
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
