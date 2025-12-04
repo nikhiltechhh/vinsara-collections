@@ -64,7 +64,7 @@ const AllProducts = () => {
           </div>
 
           {/* Load More */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -73,18 +73,11 @@ const AllProducts = () => {
             <button className="view-all-btn">
               Load More
             </button>
-          </motion.div>
+          </motion.div> */}
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-secondary py-12 border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground tracking-wider">
-            © 2024 VINSARAA. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      
     </div>
   );
 };

@@ -28,13 +28,14 @@ const NewArrivals = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 md:mb-14"
         >
-          <h2 className="text-2xl mb-6 font-light tracking-[0.3em] text-foreground">New Arrivals</h2>
+          <h2 className="text-2xl mb-6 font-light tracking-[0.3em] text-[#440504]">New Arrivals</h2>
           <Link
-            to="/all-products"
-            className="view-all-btn inline-block"
-          >
-            View All
-          </Link>
+  to="/all-products"
+  className="view-all-btn inline-block hover:bg-[#440504] hover:text-white"
+>
+  View All
+</Link>
+
         </motion.div>
 
         {/* Desktop Grid - Hidden on mobile */}
@@ -92,9 +93,9 @@ const NewArrivals = () => {
           </div>
 
           {/* Swipe Indicator */}
-          <p className="text-center text-xs text-muted-foreground mt-4 tracking-wider">
+          {/* <p className="text-center text-xs text-muted-foreground mt-4 tracking-wider">
             SWIPE TO EXPLORE →
-          </p>
+          </p> */}
         </div>
       </div>
     </section>

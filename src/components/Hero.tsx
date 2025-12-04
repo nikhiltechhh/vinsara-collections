@@ -6,6 +6,8 @@ import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
 import hero4 from "@/assets/hero-4.jpg";
 import hero5 from "@/assets/hero-5.jpg";
+import { Link } from "react-router-dom";
+
 
 const slides = [
   {
@@ -121,9 +123,18 @@ const Hero = () => {
                 <p className="font-sans text-sm md:text-base lg:text-lg mb-5 md:mb-7 tracking-wide leading-relaxed max-w-xl">
                   {slides[currentSlide].subtitle}
                 </p>
-                <button className="pointer-events-auto bg-transparent border-2 border-hero-text text-hero-text px-8 md:px-12 py-3 md:py-3.5 text-sm md:text-base font-semibold tracking-[0.2em] hover:bg-hero-text hover:text-hero-overlay transition-all duration-300 uppercase">
-                  SHOP NOW
-                </button>
+                <Link to="/all-products">
+  <button
+    className="pointer-events-auto bg-transparent 
+      border-2 border-hero-text text-hero-text 
+      px-8 md:px-12 py-3 md:py-3.5 
+      text-sm md:text-base font-semibold tracking-[0.2em] uppercase
+      transition-all duration-300
+      hover:bg-[#440504] hover:border-[#440504] hover:text-white"
+  >
+    SHOP NOW
+  </button>
+</Link>
               </motion.div>
             </div>
           </div>

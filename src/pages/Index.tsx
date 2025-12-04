@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import NewArrivals from "@/components/NewArrivals";
 import CategorySection from "@/components/CategorySection";
 import Video from "@/components/Video";
+import Load from "@/components/Load";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -13,6 +14,7 @@ const Index = () => {
       <NewArrivals />
       <CategorySection />
       <Video />
+      <Load />
       <Footer />
       
      

@@ -139,8 +139,12 @@ const Header = ({ forceScrolled = false }: HeaderProps) => {
 
             {/* Right Icons */}
             <div className="flex items-center gap-2 md:gap-3">
-              <button className="p-2 hover:bg-foreground/5"><User className="w-5 h-5" /></button>
-              <button className="p-2 hover:bg-foreground/5"><Search className="w-5 h-5" /></button>
+<Link to="/user">
+  <button className="p-2 hover:bg-foreground/5">
+    <User className="w-5 h-5" />
+  </button>
+</Link>
+              {/* <button className="p-2 hover:bg-foreground/5"><Search className="w-5 h-5" /></button> */}
 
               {/* Shopping Cart */}
               <button 
@@ -299,9 +303,14 @@ const Header = ({ forceScrolled = false }: HeaderProps) => {
               {cartItems.length > 0 && (
                 <div className="p-4 border-t border-border">
                   <p className="text-sm font-medium mb-2">Total: ₹{cartTotal}</p>
-                  <button className="w-full bg-foreground text-background py-3 font-medium text-sm hover:bg-foreground/90 transition-all">
-                    Checkout
-                  </button>
+                 <Link to="/checkout">
+  <button 
+    onClick={toggleCart}
+    className="w-full bg-foreground text-background py-3 font-medium text-sm hover:bg-foreground/90 transition-all"
+  >
+    Checkout
+  </button>
+</Link>
                 </div>
               )}
             </motion.div>

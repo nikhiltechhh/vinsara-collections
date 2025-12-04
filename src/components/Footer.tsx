@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
     ["Privacy Policy", "/privacy"],
     ["Terms & Conditions", "/terms"],
     ["Contact us", "/contact"],
-    ["Press Stories", "/press"],
+   
   ];
 
   return (
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
             Our Brand
           </h2>
           <p className="text-[11px] text-white/80 leading-relaxed font-light">
-            Vinsaaraa was conceptualized to cater to sophisticated women who appreciate
+            Vinsaraa was conceptualized to cater to sophisticated women who appreciate
             exquisitely crafted outfits. Our garments capture the essence of handwoven
             textiles, reviving traditional crafts such as kantha, khadi, jamdani, and ikat.
           </p>
@@ -247,7 +247,7 @@ const Footer: React.FC = () => {
 
         {/* Copyright */}
         <div className="text-center pt-6 border-t border-white/20">
-          <p className="text-[10px] text-white/60 mb-2 font-light">© 2025 Vinsaaraa</p>
+          <p className="text-[10px] text-white/60 mb-2 font-light">© 2025 Vinsaraa</p>
         </div>
       </div>
     </footer>

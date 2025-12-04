@@ -38,17 +38,17 @@ const Sleeved = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border">
+      {/* <header className="border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm tracking-wide">Back</span>
           </Link>
         </div>
-      </header>
+      </header> */}
 
       {/* Page Title */}
-      <div className="text-center py-10 md:py-14">
+      <div className="text-center py-10 md:py-14 mt-6">
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] text-foreground">
           Sleeved
         </h1>

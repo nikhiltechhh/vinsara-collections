@@ -42,7 +42,7 @@ const Sleeveless = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Back Header */}
-      <header className="border-b border-border">
+      {/* <header className="border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <Link
             to="/"
@@ -52,10 +52,10 @@ const Sleeveless = () => {
             <span className="text-sm tracking-wide">Back</span>
           </Link>
         </div>
-      </header>
+      </header> */}
 
       {/* Page Title */}
-      <div className="text-center py-10 md:py-14">
+      <div className="text-center py-10 md:py-14 mt-6">
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] text-foreground">
           Sleeveless
         </h1>

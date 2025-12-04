@@ -22,7 +22,6 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <div className="min-h-screen bg-background">
-        
         <div className="pt-32 text-center">
           <h1 className="text-2xl font-serif">Product not found</h1>
           <button
@@ -98,6 +97,8 @@ const ProductDetail = () => {
       title: "Proceeding to checkout",
       description: "Redirecting to payment...",
     });
+
+    navigate("/checkout");  // ⭐ ADDED — now Buy Now opens checkout
   };
 
   const relatedProducts = products
@@ -110,8 +111,6 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      
-
       <main className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
@@ -251,7 +250,7 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Quantity Selector */}
+              {/* Quantity */}
               <div className="space-y-3">
                 <span className="text-sm font-medium tracking-wider text-foreground">
                   QUANTITY
@@ -276,17 +275,18 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
+              {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button
                   onClick={handleAddToCart}
-                  className="flex-1 border-2 border-foreground text-foreground py-4 text-sm font-medium tracking-[0.2em] hover:bg-foreground hover:text-background transition-all"
+                  className="flex-1 border-2 border-foreground text-foreground py-4 text-sm font-medium tracking-[0.2em] hover:bg-[#440504] hover:text-background transition-all"
                 >
                   ADD TO CART
                 </button>
+
                 <button
                   onClick={handleBuyNow}
-                  className="flex-1 bg-accent text-accent-foreground py-4 text-sm font-medium tracking-[0.2em] hover:bg-accent/90 transition-all"
+                  className="flex-1 bg-[#440504] text-accent-foreground py-4 text-sm font-medium tracking-[0.2em] hover:bg-[#b5b2b1] transition-all"
                 >
                   BUY IT NOW
                 </button>
@@ -392,12 +392,12 @@ const ProductDetail = () => {
                       >
                         <div className="pb-4 text-sm text-muted-foreground leading-relaxed space-y-2">
                           <p>
-                            <strong>Manufactured by:</strong> VINSARAA Textiles
-                            Pvt. Ltd.
+                            <strong>Manufactured by:</strong> VINSARAA 
+                            
                           </p>
                           <p>
-                            <strong>Address:</strong> Craft Village, Jaipur,
-                            Rajasthan, India - 302001
+                            <strong>Address:</strong> AndhraPradesh
+                            
                           </p>
                           <p>
                             <strong>Country of Origin:</strong> India
@@ -440,14 +440,8 @@ const ProductDetail = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-secondary py-12 border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground tracking-wider">
-            © 2024 VINSARAA. All rights reserved.
-          </p>
-        </div>
-      </footer>
+    
+     
     </div>
   );
 };

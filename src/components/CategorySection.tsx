@@ -30,40 +30,43 @@ const Index = () => {
       </header>
 
       {/* Category Section */}
-      <main className="w-full py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {categories.map((category, index) => (
-              <Link
-                key={category.id}
-                to={category.href}
-                className="group relative overflow-hidden cursor-pointer block animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative h-[500px] lg:h-[600px] overflow-hidden">
-                  <img
-                    src={category.image}
-                    alt={category.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-foreground/5 group-hover:bg-foreground/10 transition-colors duration-500" />
-                  
-                  {/* Category Label */}
-                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-background px-8 py-3 border border-border group-hover:bg-foreground group-hover:border-foreground transition-all duration-300">
-                      <span className="text-sm tracking-[0.2em] font-medium text-foreground group-hover:text-background transition-colors duration-300">
-                        {category.title}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
+    <main className="w-full py-12 px-4">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      {categories.map((category, index) => (
+        <Link
+          key={category.id}
+          to={category.href}
+          className="group relative overflow-hidden cursor-pointer block animate-fade-in"
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          <div className="relative h-[500px] lg:h-[600px] overflow-hidden">
+            <img
+              src={category.image}
+              alt={category.alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-foreground/5 group-hover:bg-foreground/10 transition-colors duration-500" />
+
+            {/* Category Label */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+              <div className="bg-background px-8 py-3 border border-border 
+                  group-hover:bg-[#440504] group-hover:border-[#440504] transition-all duration-300">
+                <span className="text-sm tracking-[0.2em] font-medium text-foreground 
+                    group-hover:text-white transition-colors duration-300">
+                  {category.title}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-      </main>
+        </Link>
+      ))}
+    </div>
+  </div>
+</main>
+
     </div>
   );
 };
