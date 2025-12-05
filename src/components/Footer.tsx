@@ -29,7 +29,6 @@ const Footer: React.FC = () => {
     ["Privacy Policy", "/privacy"],
     ["Terms & Conditions", "/terms"],
     ["Contact us", "/contact"],
-   
   ];
 
   return (
@@ -221,9 +220,10 @@ const Footer: React.FC = () => {
                 />
               </button>
 
+              {/* FIXED HEIGHT HERE */}
               <div
                 className={`overflow-hidden transition-all duration-300 ${
-                  openSection === id ? "max-h-64 pb-4" : "max-h-0"
+                  openSection === id ? "max-h-screen pb-4" : "max-h-0"
                 }`}
               >
                 {content}

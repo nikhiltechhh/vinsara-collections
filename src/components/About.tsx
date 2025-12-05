@@ -5,7 +5,7 @@ export default function About() {
     <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <h1 className="text-4xl md:text-5xl font-serif text-center mb-12 text-gray-900">
+        <h1 className="text-4xl md:text-5xl font-serif text-center mb-12 text-gray-900 mt-8">
           About Us
         </h1>
 
