@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
   const policyLinks: [string, string][] = [
     ["About us", "/about"],
     ["Shipping Payment", "/shipping"],
-    ["Returns & Exchanges", "/returns"],
+    ["Payment Policy", "/returns"],
     ["Privacy Policy", "/privacy"],
     ["Terms & Conditions", "/terms"],
     ["Contact us", "/contact"],
@@ -41,9 +41,9 @@ const Footer: React.FC = () => {
             Our Brand
           </h2>
           <p className="text-[11px] text-white/80 leading-relaxed font-light">
-            Vinsaraa was conceptualized to cater to sophisticated women who appreciate
-            exquisitely crafted outfits. Our garments capture the essence of handwoven
-            textiles, reviving traditional crafts such as kantha, khadi, jamdani, and ikat.
+            Vinsaraa is India’s kurti-first brand — celebrating traditional prints from every state in effortless everyday wear.
+            We blend heritage with breathable linen comfort, bringing artisanship to your wardrobe in a modern, minimal, and meaningful way.
+            Discover kurtis that carry culture… designed for today.
           </p>
         </div>
 
@@ -75,25 +75,25 @@ const Footer: React.FC = () => {
               Customer Care
             </h3>
             <div className="space-y-3 text-white/80">
-              <p className="text-[11px] font-light">MON - FRI — 9:30 AM TO 5:30 PM (IST)</p>
+              <p className="text-[11px] font-light">Our team usually replies within 24-48 hours.</p>
 
               <p className="text-[11px] font-normal text-white">
                 Customer Care No.{" "}
                 <a
-                  href="tel:+919818033072"
-                  className="text-white/80 hover:text-white underline font-light"
+                  href="tel:+919381353338"
+                  className="text-white/80 hover:text-white  font-light"
                 >
-                  +91 9818033072
+                  +91 93813 53338
                 </a>
               </p>
 
               <p className="text-[11px] font-normal text-white">
                 Email ID{" "}
                 <a
-                  href="mailto:contact@vinsaraa.in"
-                  className="text-white/80 hover:text-white underline font-light"
+                  href="mailto:vinsaraa.official@gmail.com"
+                  className="text-white/80 hover:text-white  font-light"
                 >
-                  contact@vinsaraa.in
+                  vinsaraa.official@gmail.com
                 </a>
               </p>
             </div>
@@ -234,10 +234,10 @@ const Footer: React.FC = () => {
 
         {/* Social Icons */}
         <div className="flex justify-center space-x-6 mb-8">
-          {[Instagram, Facebook, Youtube, Linkedin].map((Icon, i) => (
+          {[Instagram].map((Icon, i) => (
             <a
               key={i}
-              href="#"
+              href="https://www.instagram.com/vinsaraa_official?igsh=MXFlazR1dWF1dnlydQ%3D%3D&utm_source=qr"
               className="text-white/70 hover:text-white transition-colors duration-200"
             >
               <Icon size={18} />

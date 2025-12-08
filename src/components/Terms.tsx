@@ -4,169 +4,143 @@ export default function Terms() {
   return (
     <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+
         {/* Header */}
-        <h1 className="text-4xl md:text-5xl font-serif text-center mb-12 text-gray-900">
-          Terms & Conditions
+        <h1 className="text-4xl md:text-5xl font-serif text-center mb-12 mt-6 text-gray-900">
+          Terms & Conditions – Vinsaraa
         </h1>
 
         {/* Content */}
-        <div className="space-y-8 text-gray-700">
-          {/* Introduction */}
-          <div className="space-y-4 text-base font-light leading-relaxed">
-            <p>
-              Welcome to Vinsaraa. These Terms and Conditions govern your use of our website and the purchase of products from our online store. By accessing or using our website, you agree to be bound by these Terms and Conditions.
-            </p>
-            <p>
-              Please read these terms carefully before using our services. If you do not agree with any part of these terms, please do not use our website.
-            </p>
-          </div>
+        <div className="space-y-8 text-gray-700 text-base font-light leading-relaxed">
 
-          {/* Use of Website */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">Use of Website</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                By accessing our website, you warrant and represent to us that you are legally entitled to do so and to make use of information made available via the website.
-              </p>
-              <p>
-                You may view and download content from our website for your personal, non-commercial use only. You may not modify, copy, distribute, transmit, display, reproduce, publish, license, create derivative works from, transfer, or sell any information obtained from the website without our prior written consent.
-              </p>
-            </div>
-          </div>
+          {/* Intro */}
+          <p>
+            Welcome to Vinsaraa. By accessing or using our website and purchasing our products, you agree to the following Terms & Conditions. Please read them carefully.
+          </p>
+
+          <p>
+            These Terms & Conditions govern your use of the Vinsaraa website and any purchases made through it. By using this website, you accept these terms in full.
+          </p>
 
           {/* Product Information */}
           <div>
             <h2 className="text-lg font-semibold mb-4 text-gray-900">Product Information</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                We strive to provide accurate product descriptions and images. However, we do not warrant that product descriptions, colors, information, or other content available on the website is accurate, complete, reliable, current, or error-free.
-              </p>
-              <p>
-                All products are subject to availability. We reserve the right to discontinue any product at any time. Prices for our products are subject to change without notice.
-              </p>
-            </div>
+            <p>We make every effort to display product colours, prints, and details accurately.</p>
+            <p>
+              Slight variations in colour, print placement, or texture may occur due to lighting, screen resolution,
+              and handmade processes. Such variations shall not be considered defects.
+            </p>
           </div>
 
-          {/* Orders and Payment */}
+          {/* Order & Payment */}
           <div>
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">Orders and Payment</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                When you place an order with us, you are offering to purchase a product. All orders are subject to acceptance and availability. We reserve the right to refuse or cancel any order for any reason.
-              </p>
-              <p>
-                Payment must be received by us prior to the dispatch of your order. We accept various payment methods including credit cards, debit cards, net banking, and cash on delivery (where available).
-              </p>
-              <p>
-                All prices are listed in Indian Rupees (INR) and include applicable taxes unless otherwise stated.
-              </p>
-            </div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-900">Order & Payment</h2>
+            <p>All orders placed on www.vinsaraa.in are processed only after successful payment.</p>
+            <p>
+              We reserve the right to cancel or refuse any order due to incorrect pricing, technical issues, or suspicious activity.
+            </p>
+            <p>Prices may change without prior notice.</p>
           </div>
 
-          {/* Shipping and Delivery */}
+          {/* Shipping & Delivery */}
           <div>
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">Shipping and Delivery</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                We will arrange for shipment of the products to you. Please refer to our Shipping & Payment page for detailed information about shipping costs, delivery times, and shipping restrictions.
-              </p>
-              <p>
-                Risk of loss and title for products purchased from us pass to you upon delivery of the items to the carrier. We are not responsible for delays caused by shipping carriers or customs clearance processes.
-              </p>
-            </div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-900">Shipping & Delivery</h2>
+            <p>Standard shipping timelines will be mentioned during checkout.</p>
+            <p>
+              Delivery delays caused by courier partners, weather conditions, or national holidays are beyond our control.
+            </p>
+            <p>
+              Customers must provide accurate delivery information. We are not responsible for failed deliveries due to incorrect details.
+            </p>
           </div>
 
-          {/* Returns and Refunds */}
+          {/* No Return No Refund */}
           <div>
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">Returns and Refunds</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                Please refer to our Returns & Exchanges page for detailed information about our return and refund policies. Not all products are eligible for return, and certain conditions apply.
-              </p>
-              <p>
-                Returns must be initiated within the specified timeframe and products must be in their original condition with all tags and packaging intact.
-              </p>
-            </div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-900">No Return & No Refund Policy</h2>
+            <p>
+              At Vinsaraa, we follow a strict No Return and No Refund policy.
+              Once an order is placed and delivered, it cannot be returned or refunded for reasons including personal preference, colour mismatch, or print variation.
+            </p>
+          </div>
+
+          {/* Exchange Policy */}
+          <div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-900">Exchange Policy (Size Exchange Only)</h2>
+
+            <h3 className="font-semibold mt-4">1 Eligibility for Size Exchange</h3>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>The product delivered is unused, unwashed, and in original condition.</li>
+              <li>Tags, labels, and packaging are intact.</li>
+              <li>The exchange request is raised within 48 hours of delivery.</li>
+            </ul>
+
+            <h3 className="font-semibold mt-4">2 Non-Eligible Cases</h3>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>The product is used, washed, or damaged after delivery.</li>
+              <li>Any fragrance, makeup, stains, or wear marks are present.</li>
+              <li>The requested size is unavailable in stock.</li>
+            </ul>
+
+            <h3 className="font-semibold mt-4">3 Exchange Process</h3>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Customers must contact us at <span className="font-medium">customercare.vinsaraa@gmail.com</span> with their order ID and size issue.</li>
+              <li>Once the request is approved, the customer must ship the product back to us.</li>
+              <li>Reverse pickup may or may not be available depending on the pincode.</li>
+              <li>Shipping charges for sending the product back may be borne by the customer.</li>
+              <li>After inspection, the correct size will be shipped.</li>
+            </ul>
+          </div>
+
+          {/* Cancellation */}
+          <div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-900">Cancellation Policy</h2>
+            <p>Orders once placed cannot be cancelled after they are processed or shipped.</p>
+            <p>If cancellation is requested before processing, it may be accepted at our discretion.</p>
           </div>
 
           {/* Intellectual Property */}
           <div>
             <h2 className="text-lg font-semibold mb-4 text-gray-900">Intellectual Property</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                All content on this website, including but not limited to text, graphics, logos, images, designs, and software, is the property of Vinsaraa or its content suppliers and is protected by international copyright, trademark, and other intellectual property laws.
-              </p>
-              <p>
-                You may not reproduce, distribute, modify, create derivative works of, publicly display, or exploit any of the content without our prior written permission.
-              </p>
-            </div>
-          </div>
-
-          {/* Limitation of Liability */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">Limitation of Liability</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                To the maximum extent permitted by law, Vinsaraa shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from:
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Your access to or use of or inability to access or use our website</li>
-                <li>Any conduct or content of any third party on the website</li>
-                <li>Any content obtained from the website</li>
-                <li>Unauthorized access, use, or alteration of your transmissions or content</li>
-              </ul>
-            </div>
+            <p>
+              All content on this website, including logos, images, text, and designs, is owned by Vinsaraa.
+              Unauthorized use or reproduction is strictly prohibited.
+            </p>
           </div>
 
           {/* Privacy */}
           <div>
             <h2 className="text-lg font-semibold mb-4 text-gray-900">Privacy</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                Your use of our website is also governed by our Privacy Policy. Please review our Privacy Policy to understand our practices regarding the collection and use of your personal information.
-              </p>
-            </div>
+            <p>
+              Your personal information is protected and used only for order processing and communication.
+              We do not share your details with third parties except for essential logistics partners.
+            </p>
           </div>
 
-          {/* Governing Law */}
+          {/* Limitation of Liability */}
           <div>
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">Governing Law</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes arising out of or relating to these terms shall be subject to the exclusive jurisdiction of the courts located in Gurugram, Haryana.
-              </p>
-            </div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-900">Limitation of Liability</h2>
+            <p>
+              Vinsaraa is not liable for any indirect, incidental, or consequential damages arising from website use or product purchase.
+            </p>
+            <p>Our maximum liability is limited to the value of the product purchased.</p>
           </div>
 
           {/* Changes to Terms */}
           <div>
             <h2 className="text-lg font-semibold mb-4 text-gray-900">Changes to Terms</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                We reserve the right to modify these Terms and Conditions at any time. Changes will be effective immediately upon posting to the website. Your continued use of the website following the posting of changes constitutes your acceptance of such changes.
-              </p>
-              <p>
-                We recommend that you review these Terms and Conditions periodically for any updates or changes.
-              </p>
-            </div>
+            <p>
+              Vinsaraa reserves the right to modify or update these Terms & Conditions at any time.
+              Continued use of the website implies acceptance of the updated terms.
+            </p>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact */}
           <div>
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">Contact Us</h2>
-            <div className="space-y-4 text-base font-light leading-relaxed">
-              <p>
-                If you have any questions about these Terms and Conditions, please contact us at:
-              </p>
-              <p>
-                Email: contact@vinsaraa.com<br />
-                Phone: +91 9818033072<br />
-                Address: Andhrapradesh, India
-              </p>
-            </div>
+            <h2 className="text-lg font-semibold mb-4 text-gray-900">Contact Information</h2>
+            <p>For queries, support, or exchange requests, contact us at:</p>
+            <p>Email: customercare.vinsaraa@gmail.com</p>
           </div>
 
-         
         </div>
       </div>
     </div>

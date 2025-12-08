@@ -4,15 +4,17 @@ export default function About() {
   return (
     <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+        
         {/* Header */}
         <h1 className="text-4xl md:text-5xl font-serif text-center mb-12 text-gray-900 mt-8">
-          About Us
+          About Vinsaraa – Our Story
         </h1>
 
         {/* Main Content Container */}
         <div className="max-w-5xl mx-auto">
+
           {/* Image Section */}
-          <div className="w-full mb-8">
+          <div className="w-full mb-10">
             <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[450px] overflow-hidden rounded-lg shadow-lg">
               <img
                 src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200&h=600&fit=crop"
@@ -23,27 +25,59 @@ export default function About() {
           </div>
 
           {/* Text Content */}
-          <div className="space-y-6 text-gray-700 leading-relaxed">
-            <p className="text-base md:text-lg font-light">
-              In the world of handcrafted textiles, Vinsaraa is a rare and inspired talent, who has, over the past two decades pioneered something of a revolution in Indian textiles. Using traditional techniques and indigenous materials, but with constant experimentation and research, Vinsaraa has created a whole new vocabulary in textile design. The combination of her unique sensibility, especially in tone and texture, with her profound knowledge of the weaving process and other textile techniques, as well as her commitment to support the craft sector has made such innovation possible. Through her prodigious output, she has generated an exciting and original, extremely contemporary, design palette, while at the same time pushing forward the frontiers of the traditional skills on which her work is based.
+          <div className="space-y-6 text-gray-700 leading-relaxed text-base md:text-lg font-light">
+            <p>
+              India holds a thousand stories—woven, printed, and block-carved into fabrics that have travelled through generations. Yet, in a world full of fashion labels, we noticed one missing piece: 
+              a brand dedicated solely to the beauty of kurtis.
             </p>
 
-            <p className="text-base md:text-lg font-light">
-              A 1980 graduate of the National Institute of Design in Ahmedabad, India, Vinsaraa made her first commercial breakthrough in 1989 with her signature 'First Design', a black and tussar weave, which was acclaimed internationally. Widely covered by the media as a designer who had achieved a rare synergy between classic textile craft and contemporary design, her work is often described as 'contemporary classic'.
+            <p>
+              Vinsaraa was born from a simple realisation—no single brand celebrated kurtis as their identity, and no wardrobe essential deserved that spotlight more. A kurti is comfort, tradition, versatility, and everyday elegance wrapped into one. But for us, it is also a canvas where India’s cultural prints find new life.
             </p>
 
-            <p className="text-base md:text-lg font-light">
-              Entry into the export market led to Vinsaraa's participation in major international trade fairs, including the Maison et Object and the Pret a Porter in Paris and the Hiemtextil in Frankfurt. Her clients include Liberty, Selfridges, The Conran Shop, Anthropologie, Le Bon Marche, and Caravane. Endorsed also by the connoisseur, Vinsaraa's textiles have been described as "collectible antiques of the future". Vinsaraa's label covers a range of products including shawls, scarves, ready-to-wear garments, and home furnishings. New lines and products are emerging all the time as a team of young designers works with Vinsaraa at her studio, exploring every conceivable textile technique to discover new possibilities.
+            <p>
+              Across India, every state carries a unique textile legacy—Ajrakh from Kutch, Bagru from Rajasthan, Kalamkari from Andhra Pradesh, Dabu, Pochampally, Sanganeri, and countless more. These prints carry the fingerprints of artisans, the rhythm of handlooms, and the pride of generations. 
+              Yet finding them all in one place was never easy—for the customer or the craftsperson.
+            </p>
+
+            <p>
+              So we created Vinsaraa with a vision to bridge this gap.
+            </p>
+
+            <h2 className="text-xl font-semibold text-gray-900 mt-6">A Home for Every Indian Print</h2>
+            <p>
+              Vinsaraa brings together traditional prints from every corner of India and turns them into effortless, everyday kurtis—designed for the modern woman, without losing the soul of the fabric.
+            </p>
+
+            <p>
+              We believe in giving heritage a contemporary voice. That’s why we craft our pieces in premium linen, blending long-lasting comfort with breathable elegance—making each kurti not just beautiful, but wearable every single day.
+            </p>
+
+            <h2 className="text-xl font-semibold text-gray-900 mt-6">Empowering Artisans, Preserving Culture</h2>
+            <p>
+              At the heart of Vinsaraa lies a purpose: to honour the artisans, block printers, and weavers who keep our heritage alive. When you wear Vinsaraa, you wear the stories of their hands, their villages, and their traditions.
+            </p>
+
+            <h2 className="text-xl font-semibold text-gray-900 mt-6">Made for the Woman Who Loves India, Her Way</h2>
+            <p>
+              Vinsaraa is for the woman who chooses style with meaning—who wants her everyday wear to carry a touch of culture, crafted thoughtfully and responsibly. 
+              A kurti that feels like home, yet looks like today.
+            </p>
+
+            <h2 className="text-xl font-semibold text-gray-900 mt-6">Vinsaraa — A Thread Between Tradition and Today</h2>
+            <p>
+              Our journey has just begun, but our vision is timeless:  
+              to make the kurti a celebrated symbol of India’s craft,  
+              to bring every regional print under one roof,  
+              and to make heritage effortlessly wearable.
+            </p>
+
+            <p className="font-medium text-gray-900">
+              Welcome to Vinsaraa.  
+              Where every print has a story.  
+              And every story becomes yours.
             </p>
           </div>
-        </div>
-
-        {/* Projects Section */}
-        <div className="max-w-5xl mx-auto mt-20">
-          <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-8">
-            PROJECTS
-          </h2>
-          {/* Add your projects content here */}
         </div>
       </div>
     </div>

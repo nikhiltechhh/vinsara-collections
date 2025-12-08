@@ -99,11 +99,11 @@ const Header = ({ forceScrolled = false }: HeaderProps) => {
           {/* Top row - Social Icons (hidden on scroll & mobile) */}
           {!isScrolled && (
             <div className="hidden lg:flex justify-end items-center gap-4 py-2 border-b border-hero-text/10">
-              <a href="#"><Instagram className="w-4 h-4" /></a>
-              <a href="#"><Facebook className="w-4 h-4" /></a>
+              <a href="https://www.instagram.com/vinsaraa_official?igsh=MXFlazR1dWF1dnlydQ%3D%3D&utm_source=qr"><Instagram className="w-4 h-4" /></a>
+              {/* <a href="#"><Facebook className="w-4 h-4" /></a>
               <a href="#"><Youtube className="w-4 h-4" /></a>
               <a href="#"><FaPinterest className="w-4 h-4" /></a>
-              <a href="#"><Linkedin className="w-4 h-4" /></a>
+              <a href="#"><Linkedin className="w-4 h-4" /></a> */}
             </div>
           )}
 

@@ -29,14 +29,15 @@ export default function Contact() {
       <div className="max-w-4xl mx-auto">
         {/* Customer Care Section */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-serif mb-8 text-gray-900 tracking-wide">
+          <h1 className="text-3xl md:text-4xl font-serif mb-4 text-black mt-5 tracking-wide">
             CUSTOMER CARE
           </h1>
-          
+          <p className="text-lg md:text-xl font-light text-gray-700 mb-4">
+          We’re here to help! If you have questions about your order, size exchanges, or anything related to Vinsaraa, feel free to reach out.   </p>
           <div className="space-y-2 text-base font-light text-gray-700">
-            <p>E-mail - contact@vinsaraa.com</p>
-            <p>Call/ Whatsapp - +91 9818033072</p>
-            <p>MON - FRI - 9:30 AM TO 5:30 PM (IST)</p>
+            <p>E-mail - customercare.vinsaraa@gmail.com</p>
+            <p>Our team usually replies within 24-48 hours.</p>
+            <p>Your experience matters to us!</p>
           </div>
         </div>
 
