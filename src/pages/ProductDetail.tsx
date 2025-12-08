@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp, Minus, Plus, Ruler } from "lucide-react";
+import { ChevronDown, ChevronUp, Minus, Plus, Ruler, X } from "lucide-react";
 
 import { getProductById, allProducts as products } from "@/data/allProducts";
 import ProductCard from "@/components/ProductCard";
 import { toast } from "@/hooks/use-toast";
 import { useCart } from "@/pages/CartContext";
+import Chart from "@/assets/Chart.jpeg";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +19,7 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [showSizeChart, setShowSizeChart] = useState(false);
 
   if (!product) {
     return (
@@ -98,7 +100,7 @@ const ProductDetail = () => {
       description: "Redirecting to payment...",
     });
 
-    navigate("/checkout");  // ⭐ ADDED — now Buy Now opens checkout
+    navigate("/checkout");
   };
 
   const relatedProducts = products
@@ -108,6 +110,9 @@ const ProductDetail = () => {
   const toggleAccordion = (section: string) => {
     setOpenAccordion(openAccordion === section ? null : section);
   };
+
+  // Size chart image URL - replace with your actual size chart image
+  const sizeChartImage = "https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=800&q=80";
 
   return (
     <div className="min-h-screen bg-background">
@@ -228,7 +233,10 @@ const ProductDetail = () => {
                   <span className="text-sm font-medium tracking-wider text-foreground">
                     SIZE
                   </span>
-                  <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <button 
+                    onClick={() => setShowSizeChart(true)}
+                    className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     <Ruler className="w-4 h-4" />
                     <span className="underline">Size Chart</span>
                   </button>
@@ -440,8 +448,65 @@ const ProductDetail = () => {
         </div>
       </main>
 
-    
-     
+      {/* Size Chart Modal */}
+      <AnimatePresence>
+        {showSizeChart && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowSizeChart(false)}
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+            />
+            
+            {/* Modal */}
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="w-full max-w-4xl max-h-[90vh] bg-background rounded-lg shadow-2xl flex flex-col pointer-events-auto"
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between p-4 md:p-6 border-b border-border flex-shrink-0">
+                  <div>
+                    <h2 className="text-xl md:text-2xl font-serif tracking-wide">Size Chart</h2>
+                    <p className="text-sm text-muted-foreground mt-1">Find your perfect fit</p>
+                  </div>
+                  <button
+                    onClick={() => setShowSizeChart(false)}
+                    className="p-2 hover:bg-muted rounded-full transition-colors"
+                    aria-label="Close size chart"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Image Container */}
+                <div className="flex-1 overflow-auto p-4 md:p-6">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <img
+                      src={Chart}
+                      alt="Size Chart"
+                      className="max-w-full max-h-full object-contain rounded-lg shadow-md"
+                    />
+                  </div>
+                </div>
+
+                {/* Footer */}
+                <div className="p-4 md:p-6 border-t border-border bg-muted/30 flex-shrink-0">
+                  <p className="text-xs md:text-sm text-muted-foreground text-center">
+                    All measurements are in inches. For any queries, please contact our customer support.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
