@@ -35,7 +35,7 @@ const Footer = () => {
             Our Brand
           </h2>
           <p className="text-[11px] text-white/80 leading-relaxed font-light">
-            Vinsaraa is India's kurti-first brand — celebrating traditional prints from every state in effortless everyday wear.
+            Vinsaraa is India's first kurti-brand — celebrating traditional prints from every state in effortless everyday wear.
             We blend heritage with breathable linen comfort, bringing artisanship to your wardrobe in a modern, minimal, and meaningful way.
             Discover kurtis that carry culture… designed for today.
           </p>
