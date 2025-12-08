@@ -18,6 +18,7 @@ import Shipping from "./components/Shipping";
 import Returns from "./components/Returns";
 import Contact from "./components/Contact";
 import Terms from "./components/Terms";
+import Privacy from "./components/Privacy";
 
 import Index from "./pages/Index";
 import AllProducts from "./pages/AllProducts";
@@ -26,6 +27,7 @@ import NotFound from "./pages/NotFound";
 import Sleeved from "./pages/Sleeved";
 import Sleeveless from "./pages/Sleeveless";
 import Checkout from "./pages/Checkout";
+
 
 const queryClient = new QueryClient();
 
@@ -101,6 +103,7 @@ const App = () => (
               <Route path="/returns" element={<Returns />} />
               <Route path="/contact" element={<Contact />} /> 
               <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
             </Routes>
           </Layout>
         </BrowserRouter>
