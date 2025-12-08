@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -8,6 +7,16 @@ export default function Login() {
   });
   
   const [showPassword, setShowPassword] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,12 +32,27 @@ export default function Login() {
     alert('Continue with Google authentication');
   };
 
+  const goToHome = () => {
+    window.location.href = '/';
+  };
+
   return (
     <div className="min-h-screen bg-white flex">
       {/* Left Side - Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16">
         <div className="w-full max-w-md">
           
+          {/* Back to Home Button */}
+          <a 
+            href="/" 
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#440504] transition-colors mb-8 group"
+          >
+            <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span className="font-medium">Back to Home</span>
+          </a>
+
           {/* Header */}
           <div className="mb-12">
             <p className="text-sm font-medium text-gray-400 tracking-widest mb-3">WELCOME BACK</p>
@@ -36,11 +60,11 @@ export default function Login() {
               Log in to account<span className="text-[#440504]">.</span>
             </h1>
             <p className="text-gray-500 text-base">
-  Don't Have An Account?{" "}
-  <Link to="/user" className="text-[#440504] hover:underline font-medium">
-    Sign Up
-  </Link>
-</p>
+              Don't Have An Account?{" "}
+              <a href="/user" className="text-[#440504] hover:underline font-medium">
+                Sign Up
+              </a>
+            </p>
           </div>
 
           {/* Form Fields */}
@@ -55,7 +79,7 @@ export default function Login() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-4 bg-gray-50 border-0  text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-[#440504] outline-none transition-all"
+                  className="w-full px-4 py-4 bg-gray-50 border-0 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-[#440504] outline-none transition-all"
                   placeholder="your@email.com"
                 />
                 <div className="absolute right-4 top-1/2 -translate-y-1/2">
@@ -79,7 +103,7 @@ export default function Login() {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full px-4 py-4 bg-gray-50 border-0  text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-[#440504] outline-none transition-all"
+                  className="w-full px-4 py-4 bg-gray-50 border-0 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-[#440504] outline-none transition-all"
                   placeholder="••••••••"
                 />
                 <button
@@ -106,7 +130,7 @@ export default function Login() {
               <input
                 type="checkbox"
                 id="remember"
-                className="w-4 h-4 text-[#440504] bg-gray-100 border-gray-300  focus:ring-[#440504] focus:ring-2"
+                className="w-4 h-4 text-[#440504] bg-gray-100 border-gray-300 focus:ring-[#440504] focus:ring-2"
               />
               <label htmlFor="remember" className="ml-2 text-sm text-gray-600">
                 Remember me for 30 days
@@ -116,7 +140,7 @@ export default function Login() {
             {/* Login Button */}
             <button
               onClick={handleSubmit}
-              className="w-full px-8 py-4 bg-[#440504] hover:bg-[#5a0605] text-white font-semibold  transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mt-2"
+              className="w-full px-8 py-4 bg-[#440504] hover:bg-[#5a0605] text-white font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mt-2"
             >
               Log in
             </button>
@@ -134,7 +158,7 @@ export default function Login() {
             {/* Google Login */}
             <button
               onClick={handleGoogleLogin}
-              className="w-full px-8 py-4 bg-white border-2 border-gray-200 hover:border-[#440504] text-gray-700 font-semibold  transition-all flex items-center justify-center gap-3 group"
+              className="w-full px-8 py-4 bg-white border-2 border-gray-200 hover:border-[#440504] text-gray-700 font-semibold transition-all flex items-center justify-center gap-3 group"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -177,6 +201,19 @@ export default function Login() {
           </p>
         </div>
       </div>
+
+      {/* Floating Back to Home Button */}
+      {showScrollTop && (
+        <button
+          onClick={goToHome}
+          className="fixed bottom-8 right-8 bg-[#440504] hover:bg-[#5a0605] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 z-50 group"
+          aria-label="Back to home"
+        >
+          <svg className="w-6 h-6 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }

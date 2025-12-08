@@ -32,6 +32,17 @@ export default function User() {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16">
         <div className="w-full max-w-xl">
           
+          {/* Back to Home Button */}
+          <a 
+            href="/" 
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#440504] transition-colors mb-8 group"
+          >
+            <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span className="font-medium">Back to Home</span>
+          </a>
+
           {/* Header */}
           <div className="mb-12">
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
@@ -179,12 +190,6 @@ export default function User() {
 
             {/* Buttons */}
             <div className="flex gap-4 pt-4">
-              {/* <button
-                type="button"
-                className="flex-1 px-8 py-4 bg-gray-100 text-gray-600 font-semibold rounded-xl hover:bg-gray-200 transition-all"
-              >
-                Change method
-              </button> */}
               <button
                 onClick={handleSubmit}
                 className="flex-1 px-8 py-4 bg-[#440504] hover:bg-[#5a0605] text-white font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
