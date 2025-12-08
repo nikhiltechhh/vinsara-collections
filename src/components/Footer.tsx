@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import {
-  Instagram,
-  ChevronDown,
-  Mail,
-} from "lucide-react";
+import { Instagram, ChevronDown, Mail } from "lucide-react";
+import { Link } from "react-router-dom"; // ✅ Added for routing
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -52,15 +49,16 @@ const Footer = () => {
             <h3 className="text-[11px] font-light mb-4 tracking-widest uppercase text-white">
               Policies
             </h3>
+
             <ul className="space-y-2">
               {policyLinks.map(([label, link]) => (
                 <li key={label}>
-                  <a
-                    href={link}
+                  <Link
+                    to={link}
                     className="text-[11px] text-white/80 hover:text-white transition-colors duration-200 font-light"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -78,7 +76,7 @@ const Footer = () => {
                 Customer Care No.{" "}
                 <a
                   href="tel:+919381353338"
-                  className="text-white/80 hover:text-white  font-light"
+                  className="text-white/80 hover:text-white font-light"
                 >
                   +91 93813 53338
                 </a>
@@ -88,7 +86,7 @@ const Footer = () => {
                 Email ID{" "}
                 <a
                   href="mailto:vinsaraa.official@gmail.com"
-                  className="text-white/80 hover:text-white  font-light"
+                  className="text-white/80 hover:text-white font-light"
                 >
                   vinsaraa.official@gmail.com
                 </a>
@@ -134,12 +132,12 @@ const Footer = () => {
                 <ul className="space-y-2">
                   {policyLinks.map(([label, link]) => (
                     <li key={label}>
-                      <a
-                        href={link}
+                      <Link
+                        to={link}
                         className="text-[11px] text-white/80 hover:text-white transition-colors duration-200 font-light"
                       >
                         {label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -233,7 +231,7 @@ const Footer = () => {
           {[Instagram].map((Icon, i) => (
             <a
               key={i}
-              href="https://www.instagram.com/vinsaraa_official?igsh=MXFlazR1dWF1dnlydQ%3D%3D&utm_source=qr"
+              href="https://www.instagram.com/vinsaraa_official"
               className="text-white/70 hover:text-white transition-colors duration-200"
             >
               <Icon size={18} />
